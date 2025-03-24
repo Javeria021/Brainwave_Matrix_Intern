@@ -56,9 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
 function updateUI(totalIncome = null, totalExpenses = null, totalBalance = null) {
     let { totalIncome: inc, totalExpenses: exp, totalBalance: bal } = calculateBalance();
 
-    document.getElementById("total-balance").textContent = `$${totalBalance !== null ? totalBalance : bal}`;
-    document.getElementById("total-expenses").textContent = `$${totalExpenses !== null ? totalExpenses : exp}`;
-    document.getElementById("total-income").textContent = `$${totalIncome !== null ? totalIncome : inc}`;
+    document.getElementById("total-balance").textContent = `Rs. ${totalBalance !== null ? totalBalance : bal}`;
+    document.getElementById("total-expenses").textContent = `Rs. ${totalExpenses !== null ? totalExpenses : exp}`;
+    document.getElementById("total-income").textContent = `Rs. ${totalIncome !== null ? totalIncome : inc}`;
 
     const transactionList = document.getElementById("transaction-list");
     if (transactionList) {
@@ -66,7 +66,7 @@ function updateUI(totalIncome = null, totalExpenses = null, totalBalance = null)
         transactions.forEach(txn => {
             const txnElement = document.createElement("li");
             txnElement.innerHTML = `
-                ${txn.category}: ${txn.type === "income" ? "+" : "-"}$${txn.amount}
+                ${txn.category}: ${txn.type === "income" ? "+" : "-"}Rs. ${txn.amount}
                 <button onclick="deleteTransaction(${txn.id})">X</button>
             `;
             transactionList.appendChild(txnElement);
@@ -112,8 +112,8 @@ function updateBudgetProgress() {
         const isOverBudget = spent > budget[category].total;
 
         const progressBar = `
-           <div style="color: ${isOverBudget ? 'red' : 'black'};">
-                ${category}: $${spent} / $${budget[category].total}
+            <div style="color: ${isOverBudget ? 'red' : 'black'};">
+                ${category}: Rs. ${spent} / Rs. ${budget[category].total}
             </div>
             <progress value="${percentage}" max="100" style="accent-color: ${isOverBudget ? 'red' : 'green'};"></progress>
         `;
@@ -124,7 +124,6 @@ function updateBudgetProgress() {
     localStorage.setItem("budget", JSON.stringify(budget));
 }
 
-// Function to set a savings goal
 function setSavingsGoal() {
     const goal = parseFloat(document.getElementById("goal-amount").value);
     if (isNaN(goal) || goal <= 0) {
