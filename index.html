@@ -7,6 +7,57 @@
     <title>Money Tracker App</title>
 </head>
 <body>
+    <header>
+        <img src="assets/Img_1.png" alt="logo" class="header-icon">
+        <h1>Money Tracker App</h1>
+        <nav>
+          <a href="#">Dashboard</a>
+          <a href="#">Transactions</a>
+          <a href="#">Settings</a>
+        </nav>
+    </header>
       
+    <main>
+        <section id="stats">
+          <div class="card">Total Balance: <span id="total-balance">$0</span></div>
+          <div class="card">Total Expenses: <span id="total-expenses">$0</span></div>
+          <div class="card">Total Income: <span id="total-income">$0</span></div>
+        </section>
+         
+        <section id="add-transaction">
+          <h2>Add Transaction</h2>
+          <div class="transaction-form">
+            <input type="text" id="transaction-category" placeholder="Category (Food, Rent, etc.)" required>
+              <input type="number" id="transaction-amount" placeholder="Amount" required>
+              <select id="transaction-type">
+                  <option value="income">Income</option>
+                  <option value="expense">Expense</option>
+              </select>
+              <button id="add-transaction-btn">Add Transaction</button>
+              <button id="undo-transaction-btn">Reset Transaction</button> 
+          </div>
+        </section>
+
+        <section id="budget-management">
+            <div class="set-budget-form">
+             <h2>Set Budget</h2>
+             <input type="text" id="budget-category" placeholder="Category (Food, Rent, etc.)" required>
+             <input type="number" id="budget-amount" placeholder="Budget Amount" required>
+             <button id="set-budget-btn">Set Budget</button>
+             <div id="budget-progress"></div>
+            </div>
+        </section>
+
+        <!-- <section id="savings-goals">
+            <div class="set-goal-form">
+             <h2>Saving Goals</h2>
+             <input type="number" id="goal-amount" placeholder="Goal Amount" required>
+             <button id="set-goal-btn">Set Goal</button>
+             <div id="goal-progress"></div>
+            </div>
+        </section>                  -->
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
